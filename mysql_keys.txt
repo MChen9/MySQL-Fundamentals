@@ -1,0 +1,8 @@
+mysql password: 123456
+root: 123456
+
+mysql-ctl start is now $sudo service mysql start
+
+mysql-ctl stop is now $sudo service mysql stop
+
+mysql-ctl cli is now $mysql -p
