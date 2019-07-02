@@ -356,7 +356,10 @@ group by customer_id;
 
 -- ON DELETE CASCADE
 -- if a record in the parent table is deleted, then the corresponding records in the child table will automatically be deleted
--- If customers delete some rows, then orders should change
+-- If _customers_ delete some rows, then _orders_ should change
+-- We can delete rows in child table but cannot add rows
+-- We can add rows in parent table but cannot delete rows
+
 CREATE TABLE customers(
     id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(100),
