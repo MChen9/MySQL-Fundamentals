@@ -6,11 +6,11 @@ drop database <name>;
 
 show databases;
 
-use <database name>; // begin to use a database
+use <database name>; -- begin to use a database
 
-select database(); // tell current db in use
+select database(); -- tell current db in use
 
-drop table table_name;
+
 
 # Table Operations
 
@@ -20,23 +20,23 @@ create table <name> (
 
 create table <name> (
 	col_name datatype not null,
-	col_name datatype not null); // values with default null
+	col_name datatype not null); -- values with default null
 
 create table <name> (
 	col_name datatype default <value>,
-	col_name datatype default <value>); // values with default value
+	col_name datatype default <value>); -- values with default value
 	
 create table <name> (
 	col_name datatype not null default <value>,
-	col_name datatype not null default <value>); // default value cannot be null
+	col_name datatype not null default <value>); -- default value cannot be null
 
 show tables;
 
 show columns from <table_name>;
 OR
-desc <table_name>; //describe table
+desc <table_name>; -- describe table
 
-drop table <table_name>; // similar to drop database
+drop table <table_name>; -- similar to drop database
 
 show tables;
 
@@ -44,16 +44,16 @@ show tables;
 # Data Operations
 
 insert into cats(name, age)
-values ('Jetson', 3); // order matters
+values ('Jetson', 3); -- order matters
 
 insert into table_name(col_name, col_name, ...)
 values (, , ...),
 	 (...),
-	(...); // multiple insert/update
+	(...); -- multiple insert/update
 
-select * from table_name; // show all data in the table
+select * from table_name; -- show all data in the table
 
-show warnings; // truncate if length exceed
+show warnings; -- truncate if length exceed
 
 
 # Primary Key
@@ -64,14 +64,14 @@ create table table_name (
 	primary key(cat_id));
 
 create table table_name (
-	cat_id int not null auto_increment, // do not need to add value, auto increment
+	cat_id int not null auto_increment, -- do not need to add value, auto increment
 	name varchar(100),
 	age int,
 	primary key(cat_id));
 
 
 # SELECT
-// select columns
+-- select columns
 select col_name, col_name, ... from table_name;
 
 
@@ -81,7 +81,7 @@ select col_name from table_name where condition;
 
 
 # Alias
-// easier to read data
+-- easier to read data
 
 select col_name as new_name from table_name;
 
@@ -93,10 +93,10 @@ where condition;
 
 
 # DELETE
-// delete rows
+-- delete rows
 delete from table_name where conditions;
 
-delete from table_name; // delete all rows, but table still be
+delete from table_name; -- delete all rows, but table still be
 
 
 # Run SQL Files
@@ -110,19 +110,19 @@ source path/file_name.sql;
 
 select concat(x, y, z) from table_name;
 
-select concat(fname, ' ', lname) from table_name; // give a space between fname and lname
+select concat(fname, ' ', lname) from table_name; -- give a space between fname and lname
 OR
 select concat_ws(separator, x, y, z) from table_name;
 
 
-select substring(col_name, s_pos, len) from table_name; //start from 1
+select substring(col_name, s_pos, len) from table_name; -- start from 1
 OR
-select substring(col_name, start_pos) from table_name; // negative goes from end of str
+select substring(col_name, start_pos) from table_name; -- negative goes from end of str
 
 select concat(substring(author_fname, 2), ' ', substring(author_lname, 2)) from books;
 
 
-select replace('Hello World', 'Hell', '@#$Q') from table_name; // case sensitive
+select replace('Hello World', 'Hell', '@#$Q') from table_name; -- case sensitive
 
 
 select reverse(col_name) from table_name;
@@ -132,7 +132,7 @@ select char_length(col_name) from table_name;
 e.g. select char_length(author_fname) from books;
 
 
-select upper(col_name) from table_name; // can only take one argument
+select upper(col_name) from table_name; -- can only take one argument
 select lower(col_name) from table_name;
 
 select concat(substring(title, 1, 10), '...') as 'short title',
@@ -143,7 +143,7 @@ select concat(substring(title, 1, 10), '...') as 'short title',
 
 # Refine Selection
 
-select distinct col_name from table_name; // right after select
+select distinct col_name from table_name; -- right after select
 
 select distinct concat(author_lname, ' ', author_fname) as 'full name' from books;
 
@@ -151,12 +151,12 @@ select col_name from table_name order by col_name;
 
 select col_name from table_name order by col_name desc;
 
-select col1, col2, col3 from table_name order by 2; // 2 means selected col2
+select col1, col2, col3 from table_name order by 2; -- 2 means selected col2
 
-select col1, col2, col3 from table_name order by col1, col2; // after sort by col1, then sort by col2
+select col1, col2, col3 from table_name order by col1, col2; -- after sort by col1, then sort by col2
 
 
-select col_name from table_name order by col_name desc limit num; // return how many rows
+select col_name from table_name order by col_name desc limit num; -- return how many rows
 
 select col_name from table_name order by col_name desc limit start_pos, num;
 
@@ -164,17 +164,17 @@ select col_name from table_name order by col_name desc limit start_pos, num;
 select col_name from table_name where col_name like <pattern>;
 
 select author_fname from books where author_fname like '%a%'; 
-// % means anything before a or after a
-// '____' means 4 chars long
+-- % means anything before a or after a
+-- '____' means 4 chars long
 
 
 # Aggregate/Group Functions
 
-select count(col_name) from table_name; // how many rows
+select count(col_name) from table_name; -- how many rows
 
-select count(distict col_name) from table_name; // how many different rows
+select count(distict col_name) from table_name; -- how many different rows
 
-select col_name from table_name group by col_name; //condense same rows
+select col_name from table_name group by col_name; -- condense same rows
 
 
 select min(col_name) from table_name;
@@ -185,41 +185,41 @@ select * from table_name
 	where col_name = 
 	(select min(col_name) from table_name);
 
-// find the year that authors published their first books
+-- find the year that authors published their first books
 select author_fname, author_lname, min(released_year)
 	from books group by author_fname, author_lname;
 
-// find longest pages for every authors
+-- find longest pages for every authors
 select concat(author_fname, ' ', author_lname) as 'author', max(pages)
 	from books group by author_fname, author_lname;
 	
 	
 select col_name from table_name;
 
-// sum + group by
+-- sum + group by
 select concat(author_fname, ' ', author_lname) as 'author', sum(pages) from books
 	group by author_fname, author_lname;
 
 
 select avg(col_name) from table_name;
 
-// avg + group by
+-- avg + group by
 select released_year, avg(stock_quantity) from books
 	group by released_year;
 	
 	
 # Date Time
 
-select curtime(); // current curtime
-select curdate(); // current date
-select now(); // get current datetime
+select curtime(); -- current curtime
+select curdate(); -- current date
+select now(); -- get current datetime
 
 insert into people(name, birthdate, birthtime, birthdt)
 	values('Kack', curdate(), curtime(), now());
 	
 set time_zone = '-7:00';
 
-// formatting dates
+-- formatting dates
 day();
 dayname();
 dayofweek();
@@ -355,7 +355,8 @@ group by customer_id;
 
 
 -- ON DELETE CASCADE
--- If delet
+-- if a record in the parent table is deleted, then the corresponding records in the child table will automatically be deleted
+-- If customers delete some rows, then orders should change
 CREATE TABLE customers(
     id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(100),
